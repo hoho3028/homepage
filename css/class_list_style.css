@@ -1,0 +1,9 @@
+body{margin: 0;padding: 0;font-family: 'Nanum Gothic', sans-serif;}
+header{width: 100%;border-bottom: 3px solid #ff66ff;background-color: #ff99ff;margin: 0 auto;}
+.navibar{text-align:center;width:100%;padding:10px 10%;}
+.navibar h4{display:inline-block;color: #fff;margin: 0;}
+.list_box{max-width: 800px;width:50% !important;background-color: #cc99ff;margin: 0 auto;padding: 30px !important;text-align: center;border-radius:20px;position: absolute;top: 50%;left: 50%; transform: translate(-50%, -50%);}
+.list_box h2{margin-top: 0;margin-bottom: 5%;font-weight: bold;font-family: 'Lato', sans-serif;font-size: 30px;}
+.list_box img{border-radius: 50%;border:10px solid #fff;}
+.list_box div span a.btn{padding:15px 0;background-color: #fff; display: block; width: 100%; text-decoration: none;border-radius: 5px;color: #ff66ff;font-weight: bold;}
+.list_box div span a.btn:hover{background-color: #ff66ff;color: #fff;}
