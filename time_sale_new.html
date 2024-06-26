@@ -1,0 +1,184 @@
+<!--@layout(/layout/basic/main.html)-->
+<style>
+.time_sale_ban { width: 100%; margin: 0 auto;position:relative;background-color:#fff08b;padding:3%; box-sizing:border-box;}
+.clock {color: #fff;font-size: 40px; display: block; margin: 20px auto;}
+.time_img {width: 57%;display: inline-block; position: relative;margin-right:-4px;vertical-align: middle;text-align:left;}
+.time_img img{width:76%;max-width:unset;}
+.time_text {display: inline-block;width: 43%;position: relative;box-sizing: border-box;vertical-align: middle;}
+.time_text h2 {font-size: 75px;color: #000;line-height:75px;}
+.time_text p {font-size: 18px;color: #000;}
+#progressBarContainer, #finalProgressBarContainer { width: 90%;background-color: #ddd; height: 10px; margin: 20px auto; border-radius: 5px; overflow: hidden; display:none;}<!--//게이지바-->
+#progressBar { height: 100%; background-color: red; width: 0%; text-align: center;line-height: 10px; color: white; border-radius: 5px; transition: width 0.3s ease;}
+#finalProgressBar {height: 100%;background-color: yellow;width: 0%;text-align: center; line-height: 10px;color: white;border-radius: 5px;  transition: width 0.3s ease;}
+.info_text { display: none;font-size: 20px;text-align: center; padding: 20px;}
+.info_text p {font-size: 20px;color: red; text-align: center;padding: 20px; background-color: #000;}
+.buybtn{padding: 5px 15px;font-size: 15px; background-color:#000; color: white; text-decoration: none; text-align: center;border-radius:5px;}
+.time_text #finalCountdown p{font-size:45px;color:#fff;display:none;}
+#finalClock{color:#000;margin:0 auto;padding-bottom:10px;}
+.clock span{font-size:40px;vertical-align: middle;line-height:35px;font-weight:bold;}
+.show_time{position: absolute; z-index: 99; background: rgb(0, 0, 0, 0.7); width: 100%; height: 100%;left:0; top:0;}
+.show_time h4{font-size:45px;color:#fff;}
+.show_time{font-size:25px;color:#fff; padding: 7% 0; box-sizing: border-box;}
+div#buylook2 span{font-size: 15px;color: #666;padding: 0 30px;margin: 10px 0;}
+#buylook1, #buylook2{display:none;}
+#buyButton{display:none;position:absolute; top:70%;right:4%; transform:translate(0, -50%);}
+.name{font-size:15px;font-weight:600;padding:5px 0;}
+.before_price{color:#999;text-decoration:line-through;}
+.after_price{font-size:16px;color:red;font-weight:600;margin-bottom:10px;}
+#buylook1 p{font-size:25px;}
+#buyButton_m{display:none !important;}
+.clock img { width: 30px;vertical-align: middle;margin-right:10px;}
+.show_time .clock img {filter: invert(100%);}
+@media (max-width: 1024px) {
+.time_sale_ban {width: 100%; margin: 0 auto;}
+.time_text h2{font-size:50px;}
+.time_text p{font-size:25px;}
+.time_text #finalCountdown p{font-size:20px;}
+}
+@media (max-width: 800px) {
+  .time_img { width: 100%;min-height:195px;}
+  .time_text {width: 100%; margin:30px 0 10px;}
+  .clock {bottom: 5%;}
+  .time_text h2 {font-size: 50px;line-height:50px;}
+  .time_text p {font-size: 14px; }
+  .time_img img{height:unset;width:100%;width:85%;padding:10px;}
+   #buyButton {right: 0;top: 87%;padding: 5px 10px;}
+   #buyButton .buybtn{display:none !important;}
+   #buyButton_m{display:block !important;padding:10px;width:110px;line-height:15px; margin: 20px auto 0;}
+   .after_price{margin-bottom:0;}
+   .time_text .buylook p{font-size:18px;}
+}
+</style>
+<div module="Layout_Dummy" style="width:100%;text-align:center;margin:5% auto;">
+  <h1 style="display:none;">time_sale</h1>
+  <div class="time_sale_ban" style="max-width:1200px;">
+     <div class="show_time">
+         <h4>COMING SOON</h4>
+         <div id="progressBarContainer">
+          <div id="progressBar"></div>
+        </div>
+        <div class="clock"></div>
+        <p>후에 오픈됩니다.</p>
+        
+      </div>
+     <div class="time_img">
+         <img src="//ecimg.cafe24img.com/pg603b08598881082/annextelecom/time_sale/sofa_img_n.png" style="">
+         <div id="buyButton">
+             <p class="name">에센셜 Warm Beige</p>
+             <p class="before_price">3,070,000원</p>
+             <p class="after_price">35% 1,990,000원</p>
+             <a class="buybtn" href="https://www.pisolo.co.kr/product/essential-%EC%97%90%EC%84%BC%EC%85%9C/347/category/31/display/1/">지금 구매하기 ＞</a>
+         </div>
+     </div><div class="time_text">
+      <span style="display:none; background-color:#000;border-radius:20px;color:#fff;padding:10px 20px;font-size:20px;">7월 1일부터 단 7일동안!!</span>
+      <h2>TIME SALE</h2>
+      <p style="text-decoration: underline;">피졸로 베스트셀러 에센셜을 199만원에 만나보세요</p>
+      <div id="buylook1" style="margin-top:20px;">
+         <p>COUNT DOWN</p>
+      </div>
+      <div id="finalCountdown" style="display:none;">
+        <p>COUNT DOWN</p>
+        <div class="clock" id="finalClock"></div>
+        <p>남았습니다</p>
+        <div id="buylook2">
+          <span style="margin-left: 48px;">일</span> <span>시간</span> <span>분</span> <span>초</span>
+        </div>
+        <div id="finalProgressBarContainer">
+          <div id="finalProgressBar"></div>
+        </div>
+      </div>
+      <a id="buyButton_m" class="buybtn" href="https://www.pisolo.co.kr/product/essential-%EC%97%90%EC%84%BC%EC%85%9C/347/category/31/display/1/">지금 구매하기 ＞</a>
+      <div class="info_text">
+        <p>이벤트가 마감되었습니다.</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script type="text/javascript">
+const clock = document.querySelector(".clock");
+const progressBar = document.getElementById("progressBar");
+const finalCountdown = document.getElementById("finalCountdown");
+const finalClock = document.getElementById("finalClock");
+const finalProgressBar = document.getElementById("finalProgressBar");
+const showTime = document.querySelector(".show_time");
+const infoText = document.querySelector(".info_text");
+const timeImg = document.querySelector(".time_img");
+const buyButton = document.getElementById("buyButton");
+const buyButton_m = document.getElementById("buyButton_m");
+const buylook1 = document.getElementById("buylook1");
+const buylook2 = document.getElementById("buylook2");
+
+// 첫 번째 D-Day 시작 날짜와 마감 날짜 설정, 
+const firstDdayStartDate = new Date("June 18, 2024 00:00:00");//7일 이벤트 오픈전 노출시작 디데이 설정
+const firstDdayEndDate = new Date("June 27, 2024 00:00:00");//7일 이벤트 오픈날(7일이벤트)시작일 입력 - 디데이는 이날을 기점으로 7일동안 열림
+
+function getClock() {
+  const now = new Date();
+  const distance = firstDdayEndDate - now;
+  const totalDuration = firstDdayEndDate - firstDdayStartDate; // 전체 기간을 밀리초로 계산
+  const elapsedTime = totalDuration - distance; // 경과 시간
+  const progressPercentage = Math.max(0, Math.min(100, (elapsedTime / totalDuration) * 100));
+
+  if (distance < 0) {
+    clock.innerHTML = "<span>오픈</span>";
+    progressBar.style.width = '100%';
+    clearInterval(timer);
+    finalCountdown.style.display = "block";
+    showTime.style.display = "none";
+    setTimeout(getClock2, 1000);
+    buyButton.style.display = "block"; // 구매 버튼 표시
+    buyButton_m.style.display = "block"; // 모바일 구매 버튼 표시
+    buylook1.style.display = "block";
+    buylook2.style.display = "block";
+    return;
+  }
+
+  const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, "0");
+  const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+  const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+  const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0");
+
+  clock.innerHTML = `<img src="//ecimg.cafe24img.com/pg603b08598881082/annextelecom/time_sale/time_icon_s.png"><span>${days}</span> <span>:</span> <span>${hours}</span> : <span>${minutes}</span> : <span>${seconds}</span>`;
+  progressBar.style.width = `${progressPercentage}%`;
+}
+
+function getClock2() {
+  const secondDdayDate = new Date(firstDdayEndDate.getTime() + 7 * 24 * 60 * 60 * 1000); // 첫 번째 D-Day 마감 날짜로부터 7일 후
+  const now = new Date();
+  const distance = secondDdayDate - now;
+  const totalDuration = 7 * 24 * 60 * 60 * 1000; // 7일 기간을 밀리초로 계산
+  const elapsedTime = totalDuration - distance; // 경과 시간
+
+  const progressPercentage = Math.max(0, Math.min(100, (elapsedTime / totalDuration) * 100));
+
+  if (distance < 0) {
+    finalClock.innerHTML = "<span>종료</span>";
+    finalProgressBar.style.width = '100%';
+    clearInterval(timer2);
+    finalCountdown.style.display = "none";
+    infoText.style.display = "block";
+    buyButton.style.display = "none"; // 구매 버튼 숨기기
+    buylook1.style.display = "none";
+      buylook2.style.display = "none";
+    timeImg.src = "//ecimg.cafe24img.com/pg603b08598881082/annextelecom/img/time_img_2_gray.jpg"; // 이미지 변경
+    return;
+  }
+
+  const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, "0");
+  const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+  const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+  const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0");
+
+  finalClock.innerHTML = `<img src="//ecimg.cafe24img.com/pg603b08598881082/annextelecom/time_sale/time_icon_s.png"><span>${days}</span> <span>:</span> <span>${hours}</span> <span>:</span> <span>${minutes}</span> <span>:</span> <span>${seconds}</span>`;
+  finalProgressBar.style.width = `${progressPercentage}%`;
+}
+
+// 1초마다 getClock 함수를 호출하여 타이머를 업데이트
+const timer = setInterval(getClock, 1000);
+const timer2 = setInterval(getClock2, 1000);
+getClock();
+getClock2();
+</script>
+
