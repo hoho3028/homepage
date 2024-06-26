@@ -1,0 +1,143 @@
+//타임세일
+
+<!--@layout(/layout/basic/main.html)-->
+<style>
+.time_sale_ban { width: 100%; margin: 0 auto;}
+.clock {background-color: red;color: #fff;font-size: 20px; padding: 20px; width: 250px; display: block; margin: 20px auto;}
+.time_img {width: 60%;display: inline-block;height: 470px;  position: relative;margin-right:-4px;vertical-align: middle;}
+.time_img img{height:100%;max-width:unset;}
+.time_text {display: inline-block;background-color: #489f76;width: 40%;padding: 10% 0;height: 470px; position: relative;box-sizing: border-box;vertical-align: middle;}
+.time_text h2 {font-size: 75px;color: #fff;}
+.time_text p {font-size: 20px;color: #fff;}
+#progressBarContainer, #finalProgressBarContainer { width: 90%;background-color: #ddd; height: 10px; margin: 20px auto; border-radius: 5px; overflow: hidden;}
+#progressBar { height: 100%; background-color: red; width: 0%; text-align: center;line-height: 10px; color: white; border-radius: 5px; transition: width 0.3s ease;}
+#finalProgressBar {height: 100%;background-color: yellow;width: 0%;text-align: center; line-height: 10px;color: white;border-radius: 5px;  transition: width 0.3s ease;}
+.info_text { display: none;font-size: 20px;text-align: center; padding: 20px;}
+.info_text p {font-size: 20px;color: red; text-align: center;padding: 20px; background-color: #000;}
+.buybtn{display:none; position:absolute; top:90%;left:50%; transform:translate(-50%, -50%); padding: 10px 20px;font-size: 20px; background-color:#000; color: white; text-decoration: none; text-align: center;width:35%;}
+.time_text #finalCountdown p{font-size:30px;color:#fff;}
+.clock span{font-size:35px;}
+@media (max-width: 1024px) {
+.time_sale_ban {width: 100%; margin: 0 auto;}
+.time_text h2{font-size:50px;}
+.time_text p{font-size:16px;}
+.time_text #finalCountdown p{font-size:20px;}
+}
+@media (max-width: 800px) {
+  .time_img { width: 100%;height:auto;}
+  .time_text {width: 100%; height: 360px;}
+  .clock {bottom: 5%;}
+  .time_text h2 {font-size: 50px;}
+  .time_text p {font-size: 15px;color: #fff; }
+  .time_img img{height:unset;max-width:100%;}
+}
+</style>
+<div module="Layout_Dummy" style="width:100%;text-align:center;margin:5% auto;">
+  <h1 style="display:none;">time_sale</h1>
+  <div class="time_sale_ban" style="max-width:1200px;">
+     <div class="time_img">
+         <img src="//ecimg.cafe24img.com/pg603b08598881082/annextelecom/img/time_img_2.jpg" style=""><a id="buyButton" class="buybtn" href="https://www.pisolo.co.kr/product/essential-%EC%97%90%EC%84%BC%EC%85%9C/347/category/31/display/1/">구매하기</a>
+     </div><div class="time_text">
+      <p>6월 20일부터 단 7일동안!!</p>
+      <h2>TIME SALE</h2>
+      <p>피졸로 에센셜 소파 할인이벤트</p>
+      <div class="show_time">
+        <div class="clock"></div>
+        <p>뒤에 오픈됩니다.</p>
+        <div id="progressBarContainer">
+          <div id="progressBar"></div>
+        </div>
+      </div>
+      <div id="finalCountdown" style="display:none;">
+        <div class="clock" id="finalClock"></div>
+        <p>남았습니다</p>
+        <div id="finalProgressBarContainer">
+          <div id="finalProgressBar"></div>
+        </div>
+      </div>
+      <div class="info_text">
+        <p>이벤트가 마감되었습니다.</p>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script type="text/javascript">
+const clock = document.querySelector(".clock");
+const progressBar = document.getElementById("progressBar");
+const finalCountdown = document.getElementById("finalCountdown");
+const finalClock = document.getElementById("finalClock");
+const finalProgressBar = document.getElementById("finalProgressBar");
+const showTime = document.querySelector(".show_time");
+const infoText = document.querySelector(".info_text");
+const timeImg = document.querySelector(".time_img");
+const buyButton = document.getElementById("buyButton");
+
+// 첫 번째 D-Day 시작 날짜와 마감 날짜 설정
+const firstDdayStartDate = new Date("June 18, 2024 00:00:00");
+const firstDdayEndDate = new Date("June 20, 2024 00:00:00");
+
+function getClock() {
+  const now = new Date();
+  const distance = firstDdayEndDate - now;
+  const totalDuration = firstDdayEndDate - firstDdayStartDate; // 전체 기간을 밀리초로 계산
+  const elapsedTime = totalDuration - distance; // 경과 시간
+
+  const progressPercentage = Math.max(0, Math.min(100, (elapsedTime / totalDuration) * 100));
+
+  if (distance < 0) {
+    clock.innerHTML = "<span>오픈</span>";
+    progressBar.style.width = '100%';
+    clearInterval(timer);
+    finalCountdown.style.display = "block";
+    showTime.style.display = "none";
+    setTimeout(getClock2, 1000);
+    buyButton.style.display = "block"; // 구매 버튼 표시
+    return;
+  }
+
+  const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, "0");
+  const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+  const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+  const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0");
+
+  clock.innerHTML = `<span>D-${days}</span> <span>${hours}</span> : <span>${minutes}</span> : <span>${seconds}</span>`;
+  progressBar.style.width = `${progressPercentage}%`;
+}
+
+function getClock2() {
+  const secondDdayDate = new Date(firstDdayEndDate.getTime() + 7 * 24 * 60 * 60 * 1000); // 첫 번째 D-Day 마감 날짜로부터 7일 후
+  const now = new Date();
+  const distance = secondDdayDate - now;
+  const totalDuration = 7 * 24 * 60 * 60 * 1000; // 7일 기간을 밀리초로 계산
+  const elapsedTime = totalDuration - distance; // 경과 시간
+
+  const progressPercentage = Math.max(0, Math.min(100, (elapsedTime / totalDuration) * 100));
+
+  if (distance < 0) {
+    finalClock.innerHTML = "<span>종료</span>";
+    finalProgressBar.style.width = '100%';
+    clearInterval(timer2);
+    finalCountdown.style.display = "none";
+    infoText.style.display = "block";
+    buyButton.style.display = "none"; // 구매 버튼 숨기기
+    timeImg.src = "//ecimg.cafe24img.com/pg603b08598881082/annextelecom/img/time_img_2_gray.jpg"; // 이미지 변경
+    return;
+  }
+
+  const days = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, "0");
+  const hours = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0");
+  const minutes = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0");
+  const seconds = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0");
+
+  finalClock.innerHTML = `<span>D-${days}</span> <span>${hours}</span> <넴: <span>${minutes}</span> : <span>${seconds}</span>`;
+  finalProgressBar.style.width = `${progressPercentage}%`;
+}
+
+// 1초마다 getClock 함수를 호출하여 타이머를 업데이트
+const timer = setInterval(getClock, 1000);
+const timer2 = setInterval(getClock2, 1000);
+getClock();
+getClock2();
+</script>
