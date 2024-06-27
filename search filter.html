@@ -1,0 +1,70 @@
+//필터검색 소스
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Library Filter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="filter-container">
+        <select id="categoryFilter">
+            <option value="">Select Category</option>
+            <option value="wood">Wood</option>
+            <option value="metal">Metal</option>
+            <option value="glass">Glass</option>
+        </select>
+        <select id="colorFilter">
+            <option value="">Select Color</option>
+            <option value="red">Red</option>
+            <option value="blue">Blue</option>
+            <option value="green">Green</option>
+        </select>
+        <button id="filterButton">Apply Filter</button>
+    </div>
+    <div class="material-list">
+        <div class="material" data-category="wood" data-color="red">Red Wood</div>
+        <div class="material" data-category="metal" data-color="blue">Blue Metal</div>
+        <div class="material" data-category="glass" data-color="green">Green Glass</div>
+        <!-- More materials here -->
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.material-list .material {
+    margin: 10px 0;
+}
+</style>
+
+<script>
+document.getElementById('filterButton').addEventListener('click', function() {
+    const categoryFilter = document.getElementById('categoryFilter').value;
+    const colorFilter = document.getElementById('colorFilter').value;
+    const materials = document.querySelectorAll('.material');
+
+    materials.forEach(material => {
+        const category = material.getAttribute('data-category');
+        const color = material.getAttribute('data-color');
+
+        if ((categoryFilter === "" || category === categoryFilter) &&
+            (colorFilter === "" || color === colorFilter)) {
+            material.style.display = "block";
+        } else {
+            material.style.display = "none";
+        }
+    });
+});
+
+</script>
