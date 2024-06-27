@@ -1,0 +1,85 @@
+//필터검색 - 버튼 없이 바로 실시간 검색 가능하게
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자재 라이브러리 필터</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="filter-container">
+        <div>
+            <h3>카테고리</h3>
+            <label><input type="checkbox" class="categoryFilter" value="wood"> 목재</label>
+            <label><input type="checkbox" class="categoryFilter" value="metal"> 금속</label>
+            <label><input type="checkbox" class="categoryFilter" value="glass"> 유리</label>
+        </div>
+        <div>
+            <h3>색상</h3>
+            <label><input type="checkbox" class="colorFilter" value="red"> 빨강</label>
+            <label><input type="checkbox" class="colorFilter" value="blue"> 파랑</label>
+            <label><input type="checkbox" class="colorFilter" value="green"> 초록</label>
+        </div>
+        <button id="resetButton">필터 초기화</button>
+    </div>
+    <div class="material-list">
+        <div class="material" data-category="wood" data-color="red">빨강 목재</div>
+        <div class="material" data-category="metal" data-color="blue">파랑 금속</div>
+        <div class="material" data-category="glass" data-color="green">초록 유리</div>
+        <!-- 추가 자재 항목들 -->
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+}
+
+.filter-container div {
+    margin-bottom: 10px;
+}
+
+.material-list .material {
+    margin: 10px 0;
+}
+</style>
+<script>
+  function applyFilter() {
+    const categoryFilters = Array.from(document.querySelectorAll('.categoryFilter:checked')).map(checkbox => checkbox.value);
+    const colorFilters = Array.from(document.querySelectorAll('.colorFilter:checked')).map(checkbox => checkbox.value);
+    const materials = document.querySelectorAll('.material');
+
+    materials.forEach(material => {
+        const category = material.getAttribute('data-category');
+        const color = material.getAttribute('data-color');
+
+        const categoryMatch = categoryFilters.length === 0 || categoryFilters.includes(category);
+        const colorMatch = colorFilters.length === 0 || colorFilters.includes(color);
+
+        if (categoryMatch && colorMatch) {
+            material.style.display = "block";
+        } else {
+            material.style.display = "none";
+        }
+    });
+}
+
+document.querySelectorAll('.categoryFilter, .colorFilter').forEach(checkbox => {
+    checkbox.addEventListener('change', applyFilter);
+});
+
+document.getElementById('resetButton').addEventListener('click', function() {
+    document.querySelectorAll('.categoryFilter:checked').forEach(checkbox => checkbox.checked = false);
+    document.querySelectorAll('.colorFilter:checked').forEach(checkbox => checkbox.checked = false);
+    applyFilter();
+});
+
+</script>
