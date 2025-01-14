@@ -1,5 +1,7 @@
-<html>
+<html lang="ko">
   <head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
 /* body {display: flex;align-items: center;justify-content: space-around;min-height: 100vh;margin: 0;overflow: hidden;} */
     .box {display: block;width:100%;height:500px;border-radius:12px;position: relative;}
@@ -12,8 +14,56 @@
       <img src="img/before.jpg" class="green">
       <img src="img/after.jpg" class="red">
     </div>
-    <div class="box red"></div>
-  </body>
+  <div>
+  <h4>알파벳 순서 애니메이션</h4>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+      margin: 0;
+    }
+    .text {
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+    }
+  </style>
+  <div class="text" id="animatedText">HELLO</div>
+
+  <script>
+    const targetText = "WORLD"; // 최종 글자
+    const element = document.getElementById("animatedText");
+    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    let currentText = element.textContent;
+    let currentIndexes = Array.from(currentText).map(char => alphabet.indexOf(char));
+    let targetIndexes = Array.from(targetText).map(char => alphabet.indexOf(char));
+
+    function animateText() {
+      let done = true;
+      currentIndexes = currentIndexes.map((currentIndex, i) => {
+        if (currentIndex !== targetIndexes[i]) {
+          done = false;
+          currentIndex = (currentIndex + 1) % alphabet.length;
+        }
+        return currentIndex;
+      });
+
+      element.textContent = currentIndexes.map(index => alphabet[index]).join("");
+
+      if (!done) {
+        requestAnimationFrame(animateText);
+      }
+    }
+
+    animateText();
+  </script>
+
+    </div>
 </html>
 <script src="js/gsap.min.js"></script>
 <script>
