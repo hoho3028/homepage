@@ -15,17 +15,9 @@
       <img src="img/after.jpg" class="red">
     </div>
   <div>
-  <h4>알파벳 순서 애니메이션</h4>
+  <h4>알파벳 순서 애니메이션 1</h4>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: #f0f0f0;
-      margin: 0;
-    }
+
     .text {
       font-size: 3rem;
       font-weight: bold;
@@ -38,6 +30,7 @@
     const targetText = "WORLD"; // 최종 글자
     const element = document.getElementById("animatedText");
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const speed = 200;
 
     let currentText = element.textContent;
     let currentIndexes = Array.from(currentText).map(char => alphabet.indexOf(char));
