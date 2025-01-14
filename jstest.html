@@ -52,13 +52,13 @@
  <script>
     // 기본 JS 애니메이션
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const defaultTarget = "Wecometomyhome";
+    const defaultTarget = "Wecome";
     const defaultTextElement = document.getElementById("defaultText");
 
     function startDefaultAnimation() {
       let currentIndexes = Array.from(defaultTextElement.textContent).map(char => alphabet.indexOf(char));
       const targetIndexes = Array.from(defaultTarget).map(char => alphabet.indexOf(char));
-      const speed = 200;
+      const speed = 100;
 
       function animate() {
         let done = true;
