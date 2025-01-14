@@ -59,7 +59,7 @@
             currentIndexes = currentIndexes.map((currentIndex, i) => {
               if (currentIndex !== targetIndexes[i]) {
                 done = false;
-                currentIndex = (currentIndex1 + 1) % alphabet.length;
+                currentIndex = (currentIndex + 1) % alphabet.length;
               }
               return currentIndex;
             });
