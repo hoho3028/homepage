@@ -71,13 +71,13 @@
             }
           }
       
-          animateText();
+          animateText1();
         </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script>
-    const targetText = "Hello";
-    const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const element = document.getElementById("animatedText2");
+    const targetText2 = "Hello";
+    const alphabet2 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const element2 = document.getElementById("animatedText2");
 
     // 애니메이션 실행
     anime({
@@ -86,11 +86,11 @@
       duration: 5000, // 전체 애니메이션 시간 (5초)
       easing: 'linear',
       update: function (anim) {
-        const progress = Math.floor(anim.animations[0].currentValue * targetText.length);
-        element.textContent = Array.from(targetText).map((char, index) => {
-          if (index < progress) return targetText[index];
-          const randomIndex = Math.floor(Math.random() * alphabet.length);
-          return alphabet[randomIndex];
+        const progress = Math.floor(anim.animations[0].currentValue * targetText2.length);
+        element2.textContent = Array.from(targetText2).map((char, index) => {
+          if (index < progress) return targetText2[index];
+          const randomIndex = Math.floor(Math.random() * alphabet2.length);
+          return alphabet2[randomIndex];
         }).join('');
       }
     });
