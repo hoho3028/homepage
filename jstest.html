@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <style>
+    body {display: flex;align-items: center;justify-content: space-around;min-height: 100vh;margin: 0;overflow: hidden;}
+    .box {display: block;width:45px;height:45px;border-radius:12px;}
+    .green{background-color:green;}
+    </style>
+  </head>
+  <body>
+    <div class="box green"></div>
+  </body>
+</html>
+
+<script>
+  gsap.to(".box", { 
+  duration: 2,
+  backgroundColor: '#8d3dae',
+});
+</script>
