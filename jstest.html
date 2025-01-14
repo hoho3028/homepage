@@ -2,19 +2,29 @@
   <head>
     <style>
     body {display: flex;align-items: center;justify-content: space-around;min-height: 100vh;margin: 0;overflow: hidden;}
-    .box {display: block;width:45px;height:45px;border-radius:12px;}
-    .green{background-image:url("img/before.jpg");}
+    .box {display: block;width:500px;height:500px;border-radius:12px;}
+    .green{position: absolute;}
+    .red{position: absolute;}
     </style>
   </head>
   <body>
-    <div class="box green"></div>
+    <div class="box">
+      <img src="img/before.jpg" class="green">
+      <img src="img/after.jpg" class="red">
+    </div>
+    <div class="box red"></div>
   </body>
 </html>
 <script src="js/gsap.min.js"></script>
 <script>
-  gsap.to(".box", { 
+  gsap.to(".green", { 
+  duration: 10,
+  delay: 0,
+  opacity:0;,
+});
+  gsap.to(".red", { 
   duration: 10,
   delay: 2,
-  image:url("img/after.jpg"),
+  opacity:1,
 });
 </script>
