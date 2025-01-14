@@ -17,9 +17,35 @@
     </div>
   <div>
     <h4>알파벳 순서 애니메이션 1(일반 스크립트제작)</h4>
-      <div class="text" id="animatedText1">Wecome to my home, Hello</div>
-      <script>
-          const targetText = "Wecome to my home, Hello"; // 최종 글자
+      <div class="text" id="animatedText1">Wecome to my home</div>
+      
+  </div>
+  <div>
+    <h4>알파벳 순서 애니메이션 2(anime.js 구현)</h4>
+    <div class="text" id="animatedText2">Wecome to my home</div>
+    
+  </div>
+  <div>
+    <h4>알파벳 순서 애니메이션 3(Typed.js 구현)</h4>
+    <div id="animatedText3"></div>
+
+ 
+  </div>
+  <script src="js/gsap.min.js"></script>
+<script>
+  gsap.to(".green", { 
+  duration: 5,
+  delay: 0,
+  opacity:0,
+});
+  gsap.to(".red", { 
+  duration: 5,
+  delay: 0,
+  opacity:1,
+});
+</script>
+    <script>
+          const targetText = "Hello"; // 최종 글자
           const element = document.getElementById("animatedText1");
           const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
           const speed = 200;
@@ -47,14 +73,9 @@
       
           animateText();
         </script>
-  </div>
-  <div>
-    <h4>알파벳 순서 애니메이션 2(anime.js 구현)</h4>
-    <div class="text" id="animatedText2">Wecome to my home, Hello</div>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script>
-    const targetText = "Wecome to my home, Hello";
+    const targetText = "Hello";
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const element = document.getElementById("animatedText2");
 
@@ -74,13 +95,7 @@
       }
     });
   </script>
-    
-  </div>
-  <div>
-    <h4>알파벳 순서 애니메이션 3(Typed.js 구현)</h4>
-    <div id="animatedText3"></div>
-
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script>
     new Typed('#animatedText3', {
       strings: ['Wecome to my home, Hello', 'WORLD'], // 순서대로 타이핑될 문자열
@@ -90,18 +105,6 @@
       showCursor: false // 커서 표시 여부
     });
   </script>
-  </div>
+  </body>
 </html>
-<script src="js/gsap.min.js"></script>
-<script>
-  gsap.to(".green", { 
-  duration: 5,
-  delay: 0,
-  opacity:0,
-});
-  gsap.to(".red", { 
-  duration: 5,
-  delay: 0,
-  opacity:1,
-});
-</script>
+
