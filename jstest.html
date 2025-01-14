@@ -52,31 +52,29 @@
  <script>
     // 기본 JS 애니메이션
     const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const defaultTarget = "Wecome";
+    const defaultStartText = "HELLO";
     const defaultTextElement = document.getElementById("defaultText");
 
+    let defaultCurrentIndexes = Array.from(defaultStartText).map(char => alphabet.indexOf(char));
+
     function startDefaultAnimation() {
-      let currentIndexes = Array.from(defaultTextElement.textContent).map(char => alphabet.indexOf(char));
-      const targetIndexes = Array.from(defaultTarget).map(char => alphabet.indexOf(char));
-      const speed = 100;
+      let done = true;
 
-      function animate() {
-        let done = true;
-        currentIndexes = currentIndexes.map((currentIndex, i) => {
-          if (currentIndex !== targetIndexes[i]) {
-            done = false;
-            currentIndex = (currentIndex + 1) % alphabet.length;
-          }
-          return currentIndex;
-        });
-
-        defaultTextElement.textContent = currentIndexes.map(index => alphabet[index]).join("");
-
-        if (!done) {
-          setTimeout(animate, speed);
+      defaultCurrentIndexes = defaultCurrentIndexes.map((currentIndex, i) => {
+        if (currentIndex !== alphabet.indexOf(defaultStartText[i])) {
+          done = false;
+          currentIndex = (currentIndex + 1) % alphabet.length;
         }
+        return currentIndex;
+      });
+
+      defaultTextElement.textContent = defaultCurrentIndexes.map(index => alphabet[index]).join("");
+
+      if (!done) {
+        setTimeout(startDefaultAnimation, 200);
+      } else {
+        defaultTextElement.textContent = defaultStartText;
       }
-      animate();
     }
   </script>
 
