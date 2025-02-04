@@ -147,6 +147,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script>
     const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('.nav-item a');
     let currentSectionIndex = 0;
     let isScrolling = false;
 
@@ -155,16 +156,17 @@
       if (isScrolling) return;
       isScrolling = true;
 
-      if (e.deltaY > 0) {
-        navigateToNextSection();
-      } else {
-        navigateToPreviousSection();
+      if (e.deltaY > 0 && currentSectionIndex < sections.length - 1) {
+        currentSectionIndex++;
+      } else if (e.deltaY < 0 && currentSectionIndex > 0) {
+        currentSectionIndex--;
       }
 
+      scrollToSection(currentSectionIndex);
       setTimeout(() => isScrolling = false, 800);
     }, { passive: false });
 
-    document.querySelectorAll('.nav-item a').forEach((link, index) => {
+    navLinks.forEach((link, index) => {
       link.addEventListener('click', (e) => {
         e.preventDefault();
         currentSectionIndex = index;
@@ -172,23 +174,15 @@
       });
     });
 
-    function navigateToNextSection() {
-      if (currentSectionIndex < sections.length - 1) {
-        currentSectionIndex++;
-        scrollToSection(currentSectionIndex);
-      }
-    }
-
-    function navigateToPreviousSection() {
-      if (currentSectionIndex > 0) {
-        currentSectionIndex--;
-        scrollToSection(currentSectionIndex);
-      }
-    }
-
     function scrollToSection(index) {
       sections[index].scrollIntoView({ behavior: 'smooth' });
+      updateNav(index);
       animateText(sections[index].querySelector('h1'));
+    }
+
+    function updateNav(index) {
+      navLinks.forEach(link => link.classList.remove('active'));
+      navLinks[index].classList.add('active');
     }
 
     function animateText(element) {
