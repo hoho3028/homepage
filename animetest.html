@@ -35,7 +35,14 @@
     overflow: hidden;
           background-color:#000;
 }
+body {
+  -ms-overflow-style: none;  /* IE, Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 
+body::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
 .container {
     height: 100vh;
     overflow-y: scroll;
@@ -83,14 +90,7 @@
 #slide4 { background-image: url('img/main/main_bg4.jpg'); }
 #slide5 { background-image: url('img/main/main_bg5.jpg'); }
 #slide6 { background-color: #000; }
-body {
-  -ms-overflow-style: none;  /* IE, Edge */
-  scrollbar-width: none;  /* Firefox */
-}
 
-body::-webkit-scrollbar {
-  display: none;  /* Chrome, Safari, Opera */
-}
 
   </style>
 </head>
@@ -125,12 +125,12 @@ body::-webkit-scrollbar {
     </div>
     <nav>
   <ul class="nav-container">
-    <li class="nav-item"><a href="#slide1">슬라이드 1</a></li>
-    <li class="nav-item"><a href="#slide2">슬라이드 2</a></li>
-    <li class="nav-item"><a href="#slide3">슬라이드 3</a></li>
-      <li class="nav-item"><a href="#slide4">슬라이드 4</a></li>
-      <li class="nav-item"><a href="#slide5">슬라이드 5</a></li>
-      <li class="nav-item"><a href="#slide6">슬라이드 6</a></li>
+    <li class="nav-item"><a href="#slide1"></a></li>
+    <li class="nav-item"><a href="#slide2"></a></li>
+    <li class="nav-item"><a href="#slide3"></a></li>
+      <li class="nav-item"><a href="#slide4"></a></li>
+      <li class="nav-item"><a href="#slide5"></a></li>
+      <li class="nav-item"><a href="#slide6"></a></li>
   </ul>
 </nav>
 
