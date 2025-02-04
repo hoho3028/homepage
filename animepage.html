@@ -64,8 +64,6 @@ section {
   list-style-type: none;
   padding: 10px 50px;
 }
-#top-gnb li.logo {}
-#top-gnb li.topmenu {}
 	  
 #top-gnb a {
   color: white;
@@ -171,24 +169,34 @@ section {
       <li class="nav-item"><a href="#section-6"></a></li>
   </ul>
 </nav>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <script>
     // 모든 섹션을 선택
+let currentSectionIndex = 0;
 const sections = document.querySelectorAll('.section');
 
-// 섹션이 변경될 때마다 부드럽게 이동하는 이벤트 리스너 추가
 window.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  if (isScrolling) return; 
+  isScrolling = true;
+
   if (e.deltaY > 0) {
-    // 아래로 스크롤: 다음 섹션으로 이동
     navigateToNextSection();
   } else {
-    // 위로 스크롤: 이전 섹션으로 이동
     navigateToPreviousSection();
   }
+
+  setTimeout(() => isScrolling = false, 800);
+}, { passive: false });
+
+document.querySelectorAll('.nav-item a').forEach((link, index) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    currentSectionIndex = index;
+    scrollToSection(index);
+  });
 });
 
-let currentSectionIndex = 0;
-
-// 섹션 이동 함수
 function navigateToNextSection() {
   if (currentSectionIndex < sections.length - 1) {
     currentSectionIndex++;
@@ -203,73 +211,10 @@ function navigateToPreviousSection() {
   }
 }
 
-// 특정 섹션으로 부드럽게 스크롤
 function scrollToSection(index) {
-  const section = sections[index];
-  section.scrollIntoView({ behavior: 'smooth' });
+  sections[index].scrollIntoView({ behavior: 'smooth' });
 }
 
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-	<script>
-        const texts = [
-            "The quick brown fox",
-            "jumps over the lazy dog",
-            "and runs away happily"
-        ];
-
-        const highlightWords = ["quick", "lazy", "happily"];
-
-        const textContainer = document.getElementById('text-container');
-
-        // 텍스트를 span으로 감싸고 하이라이트 적용
-        texts.forEach(text => {
-            const line = document.createElement('div');
-            const words = text.split(' ');
-            words.forEach(word => {
-                const span = document.createElement('span');
-                span.innerHTML = word + ' ';
-                if (highlightWords.includes(word)) {
-                    span.classList.add('highlight');
-                }
-                line.appendChild(span);
-            });
-            textContainer.appendChild(line);
-        });
-
-        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
-        function animateLine(lineElement, delay) {
-            anime.timeline({loop: false})
-                .add({
-                    targets: lineElement.querySelectorAll('span'),
-                    innerHTML: function() {
-                        return characters[anime.random(0, characters.length - 1)];
-                    },
-                    easing: 'easeInOutQuad',
-                    duration: 500,
-                    delay: anime.stagger(50),
-                    loop: true
-                }, delay)
-                .add({
-                    targets: lineElement.querySelectorAll('span'),
-                    innerHTML: function(el) {
-                        return el.dataset.originalText;
-                    },
-                    easing: 'easeInOutQuad',
-                    duration: 500,
-                    delay: anime.stagger(50)
-                }, delay + 1000);
-        }
-
-        // 각 줄에 대해 애니메이션 적용
-        textContainer.querySelectorAll('div').forEach((line, index) => {
-            line.querySelectorAll('span').forEach(span => {
-                span.dataset.originalText = span.innerText;
-            });
-            animateLine(line, index * 1500);
-        });
     </script>
 </body>
 </html>
