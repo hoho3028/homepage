@@ -197,11 +197,7 @@ function scrollToSection(index) {
   const section = sections[index];
   section.scrollIntoView({ behavior: 'smooth' });
 }
-
-  </script>
-  <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
-  <script>
-  const sections = document.querySelectorAll('.section');
+ const sections = document.querySelectorAll('.section');
 const navItems = document.querySelectorAll('.nav-item a');
 
 window.addEventListener('scroll', () => {
@@ -222,5 +218,6 @@ window.addEventListener('scroll', () => {
   });
 });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
 </body>
 </html>
