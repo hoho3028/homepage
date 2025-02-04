@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>원페이지 스크롤 페이지</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  scroll-snap-align: start;
+}
+
+.section-1 {
+  background-color: #ff6f61;
+}
+
+.section-2 {
+  background-color: #6b5b95;
+}
+
+.section-3 {
+  background-color: #88b04b;
+}
+
+.section-4 {
+  background-color: #f1c40f;
+}
+
+.content h1 {
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+}
+#animeText {
+      font-size: 40px;
+      font-weight: bold;
+      white-space: pre-wrap; /* 줄바꿈을 유지 */
+      line-height: 1.5;
+    }
+  </style>
+<body>
+  <section class="section section-1">
+    <div class="content">
+      <h1>첫 번째 섹션</h1>
+	  <div id="animeText" style="font-size: 40px; font-weight: bold;"></div>
+    </div>
+  </section>
+
+  <section class="section section-2">
+    <div class="content">
+      <h1>두 번째 섹션</h1>
+    </div>
+  </section>
+
+  <section class="section section-3">
+    <div class="content">
+      <h1>세 번째 섹션</h1>
+    </div>
+  </section>
+
+  <section class="section section-4">
+    <div class="content">
+      <h1>네 번째 섹션</h1>
+    </div>
+  </section>
+
+  <script>
+    // 모든 섹션을 선택
+const sections = document.querySelectorAll('.section');
+
+// 섹션이 변경될 때마다 부드럽게 이동하는 이벤트 리스너 추가
+window.addEventListener('wheel', (e) => {
+  if (e.deltaY > 0) {
+    // 아래로 스크롤: 다음 섹션으로 이동
+    navigateToNextSection();
+  } else {
+    // 위로 스크롤: 이전 섹션으로 이동
+    navigateToPreviousSection();
+  }
+});
+
+let currentSectionIndex = 0;
+
+// 섹션 이동 함수
+function navigateToNextSection() {
+  if (currentSectionIndex < sections.length - 1) {
+    currentSectionIndex++;
+    scrollToSection(currentSectionIndex);
+  }
+}
+
+function navigateToPreviousSection() {
+  if (currentSectionIndex > 0) {
+    currentSectionIndex--;
+    scrollToSection(currentSectionIndex);
+  }
+}
+
+// 특정 섹션으로 부드럽게 스크롤
+function scrollToSection(index) {
+  const section = sections[index];
+  section.scrollIntoView({ behavior: 'smooth' });
+}
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
+  <script>
+  
+  </script>
+</body>
+</html>
