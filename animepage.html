@@ -109,6 +109,15 @@ section {
 .nav-item a.active {
   background-color: #333;
 }
+
+#text-container {
+            font-size: 24px;
+            line-height: 1.5;
+        }
+        .highlight {
+            color: #ff4500;
+            font-weight: bold;
+        }
   </style>
 <body>
 	<nav id="top-gnb">
@@ -200,8 +209,65 @@ function scrollToSection(index) {
 }
 
 
+const texts = [
+            "The quick brown fox",
+            "jumps over the lazy dog",
+            "and runs away happily"
+        ];
 
+        const highlightWords = ["quick", "lazy", "happily"];
+
+        const textContainer = document.getElementById('text-container');
+
+        // 텍스트를 span으로 감싸고 하이라이트 적용
+        texts.forEach(text => {
+            const line = document.createElement('div');
+            const words = text.split(' ');
+            words.forEach(word => {
+                const span = document.createElement('span');
+                span.innerHTML = word + ' ';
+                if (highlightWords.includes(word)) {
+                    span.classList.add('highlight');
+                }
+                line.appendChild(span);
+            });
+            textContainer.appendChild(line);
+        });
+
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        function animateLine(lineElement, delay) {
+            anime.timeline({loop: false})
+                .add({
+                    targets: lineElement.querySelectorAll('span'),
+                    innerHTML: function() {
+                        return characters[anime.random(0, characters.length - 1)];
+                    },
+                    easing: 'easeInOutQuad',
+                    duration: 500,
+                    delay: anime.stagger(50),
+                    loop: true
+                }, delay)
+                .add({
+                    targets: lineElement.querySelectorAll('span'),
+                    innerHTML: function(el) {
+                        return el.dataset.originalText;
+                    },
+                    easing: 'easeInOutQuad',
+                    duration: 500,
+                    delay: anime.stagger(50)
+                }, delay + 1000);
+        }
+
+        // 각 줄에 대해 애니메이션 적용
+        textContainer.querySelectorAll('div').forEach((line, index) => {
+            line.querySelectorAll('span').forEach(span => {
+                span.dataset.originalText = span.innerText;
+            });
+            animateLine(line, index * 1500);
+        });
   </script>
   <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 </body>
 </html>
