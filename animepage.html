@@ -69,7 +69,7 @@
   color: white;
   opacity: 0;              /* 초기에는 안 보이도록 */
   transform: translateY(-20px);  /* 위쪽에서 내려오는 효과 */
-  transition: opacity 0.6s ease, transform 0.6s ease; /* 부드러운 전환 효과 */
+  transition: opacity 2.0s ease, transform 2.0s ease; /* 부드러운 전환 효과 */
 }
 
 /* 활성화된 경우 */
@@ -234,7 +234,7 @@ function updateNav(index) {
 
 // 텍스트 애니메이션 함수
 function animateText(element) {
-  if (!element || element.dataset.animated === "true") return; // 이미 애니메이션된 경우 건너뛰기
+  //if (!element || element.dataset.animated === "true") return; // 이미 애니메이션된 경우 건너뛰기
 
   element.classList.add('visible'); // 스크롤 시 h1 표시
 
