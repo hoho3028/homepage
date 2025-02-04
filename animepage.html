@@ -198,31 +198,7 @@ function scrollToSection(index) {
   section.scrollIntoView({ behavior: 'smooth' });
 }
 
-	  const sections = document.querySelectorAll('.section');
-const navItems = document.querySelectorAll('.nav-item a');
 
-function updateNavigation() {
-  sections.forEach((section, index) => {
-    const rect = section.getBoundingClientRect();
-    if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
-      navItems.forEach(item => item.classList.remove('active'));
-      navItems[index].classList.add('active');
-    }
-  });
-}
-
-// 스크롤 이벤트에 updateNavigation 함수 추가
-window.addEventListener('wheel', (e) => {
-  if (e.deltaY > 0) {
-    navigateToNextSection();
-  } else {
-    navigateToPreviousSection();
-  }
-  updateNavigation();
-});
-
-// 초기 로드 시 네비게이션 상태 업데이트
-window.addEventListener('load', updateNavigation);
 
   </script>
   <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
