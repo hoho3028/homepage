@@ -63,20 +63,35 @@
       text-decoration: none;
     }
 
-    /* 모든 h1 기본 숨김 */
+  /* 모든 h1 기본 숨김 */
 .content h1 {
   font-size: 3rem;
   color: white;
-  opacity: 0;              /* 초기에는 안 보이도록 */
-  transform: translateY(-20px);  /* 위쪽에서 내려오는 효과 */
-  transition: opacity 2.0s ease, transform 2.0s ease; /* 부드러운 전환 효과 */
+  opacity: 0;               /* 초기에는 안 보이도록 */
+  transform: translateY(20px); /* 아래에서 올라오는 효과 */
+  transition: opacity 2.0s ease, transform 2.0s ease;
+  white-space: pre-line;     /* <br> 태그를 줄바꿈으로 처리 */
 }
 
-/* 활성화된 경우 */
+/* 애니메이션 시작 시 보이게 */
 .content h1.visible {
-  opacity: 1;              /* 서서히 보이도록 */
-  transform: translateY(0); /* 원래 위치로 */
+  opacity: 1;
+  transform: translateY(0); 
 }
+
+/* 각 글자 개별 애니메이션 설정 */
+.char {
+  display: inline-block;
+  opacity: 0;                /* 초기 글자 숨김 */
+  transform: translateY(20px); 
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.char.visible {
+  opacity: 1;               /* 애니메이션으로 글자 보이게 */
+  transform: translateY(0); 
+}
+
 
 
     .nav-container {
@@ -236,40 +251,42 @@ function updateNav(index) {
 function animateText(element) {
   //if (!element || element.dataset.animated === "true") return; // 이미 애니메이션된 경우 건너뛰기
 
-  element.classList.add('visible'); // 스크롤 시 h1 표시
-
-  const originalText = element.dataset.text;
+    const originalText = element.dataset.text;
   const lines = originalText.split('<br>');
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-  let lineIndex = 0;
-  let charIndex = 0;
-  const interval = setInterval(() => {
-    const currentLine = lines[lineIndex];
-    element.innerHTML = lines
-      .map((line, i) => {
-        if (i < lineIndex) return line;
-        if (i === lineIndex) {
-          return line.split('')
-            .map((char, j) => j < charIndex ? char : characters[Math.floor(Math.random() * characters.length)])
-            .join('');
-        }
-        return line;
-      })
-      .join('<br>');
+  // 초기 상태: 각 글자를 span으로 감싸고 숨김 처리
+  element.innerHTML = lines.map(line =>
+    line.split('').map(char =>
+      `<span class="char" data-char="${char}">${char === ' ' ? '&nbsp;' : ''}</span>`
+    ).join('')
+  ).join('<br>');
 
-    if (charIndex >= currentLine.length) {
-      lineIndex++;
-      charIndex = 0;
-    } else {
-      charIndex++;
-    }
+  const chars = element.querySelectorAll('.char');
+  element.classList.add('visible'); // h1 노출
 
-    if (lineIndex >= lines.length) {
-      clearInterval(interval);
-      element.dataset.animated = "true"; // 애니메이션 완료 표시
-    }
-  }, 50);
+  // 랜덤 문자 애니메이션
+  chars.forEach((charEl, index) => {
+    setTimeout(() => {
+      const targetChar = charEl.dataset.char;
+      if (targetChar !== ' ') {
+        let count = 0;
+        const interval = setInterval(() => {
+          charEl.innerHTML = characters[Math.floor(Math.random() * characters.length)];
+          count++;
+          if (count > 5) { // 5번 정도 랜덤 변경 후 최종 문자로 고정
+            clearInterval(interval);
+            charEl.innerHTML = targetChar;
+            charEl.classList.add('visible'); // 최종 문자 노출
+          }
+        }, 50);
+      } else {
+        charEl.classList.add('visible'); // 공백은 바로 보이게
+      }
+    }, index * 80); // 글자별로 순차적으로 실행 (80ms 간격)
+  });
+
+  element.dataset.animated = "true"; // 애니메이션 완료 표시
 }
 
 // IntersectionObserver로 섹션 감지
@@ -290,7 +307,6 @@ sections.forEach(section => {
   const h1 = section.querySelector('h1');
   if (h1) h1.classList.remove('visible');
 });
-
   </script>
 </body>
 </html>
