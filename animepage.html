@@ -277,7 +277,7 @@ function animateText(element) {
       } else {
         let randomizer = setInterval(() => {
           charEl.innerHTML = characters[Math.floor(Math.random() * characters.length)];
-        }, 60); // 50ms 간격으로 랜덤 문자 표시
+        }, 100); // 50ms 간격으로 랜덤 문자 표시
 
         setTimeout(() => {
           clearInterval(randomizer);       // 랜덤 문자 멈추기
