@@ -285,7 +285,7 @@ function animateText(element) {
           clearInterval(randomizer);       // 랜덤 문자 멈추기
           charEl.innerHTML = targetChar;   // 최종 문자로 고정
           charEl.classList.add('visible'); // 애니메이션 완료
-        }, 200); // 400ms 동안 랜덤 문자 변화 후 고정
+        }, 100); // 400ms 동안 랜덤 문자 변화 후 고정
       }
     }, index * 100); // 각 글자마다 100ms 간격으로 순차적 표시
   });
