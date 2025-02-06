@@ -288,7 +288,7 @@ function animateText(element) {
   // 초기 상태: 각 글자를 span으로 감싸기
   element.innerHTML = lines.map(line =>
     line.split('').map(char =>
-      <span class="char" data-char="${char}">${char === ' ' ? '&nbsp;' : ''}</span>
+      `<span class="char" data-char="${char}">${char === ' ' ? '&nbsp;' : ''}</span>`
     ).join('')
   ).join('<br>');
 
