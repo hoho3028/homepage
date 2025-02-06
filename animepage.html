@@ -283,22 +283,14 @@ function animateText(element) {
 
   const originalText = element.dataset.text;
   const lines = originalText.split('<br>');
-  const highlightWords = ["Arktos", "Journey", "Marketing"];
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
   
   // 초기 상태: 각 글자를 span으로 감싸기
-  //element.innerHTML = lines.map(line =>
-   // line.split('').map(char =>
-    //  `<span class="char" data-char="${char}">${char === ' ' ? '&nbsp;' : ''}</span>`
-  //  ).join('')
-  //).join('<br>');
-
   element.innerHTML = lines.map(line =>
-        line.split(' ').map(word =>
-          highlightWords.includes(word) ? `<span class="highlight">${word}</span>` : word
-        ).join(' ')
-      ).join('<br>');
-  
+    line.split('').map(char =>
+      <span class="char" data-char="${char}">${char === ' ' ? '&nbsp;' : ''}</span>
+    ).join('')
+  ).join('<br>');
 
   const chars = element.querySelectorAll('.char');
   element.classList.add('visible'); // h1 보이기
