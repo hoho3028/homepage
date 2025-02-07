@@ -41,8 +41,12 @@
       padding:0 50px;
       background-size:cover;
       background-repeat:no-repeat;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
     }
-
+    .section.visible {
+      opacity: 1;
+    }
     .section-1 { background-image: url('img/main/main_bg1.jpg');justify-content: flex-start;}
     .section-2 { background-image: url('img/main/main_bg2.jpg');justify-content: flex-start; }
     .section-3 { background-image: url('img/main/main_bg3.jpg');justify-content: flex-start; }
@@ -329,6 +333,7 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting) {
       const h1 = entry.target.querySelector('h1');
       animateText(h1); // 해당 섹션이 보일 때 애니메이션 실행
+      entry.target.classList.add('visible'); 
     }
   });
 }, { threshold: 0.6 });
