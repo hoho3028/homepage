@@ -11,6 +11,7 @@
       background-color:#000;
       -ms-overflow-style: none;
     }
+    .mo{display:none;}
     ::-webkit-scrollbar {
       display: none;
     }
@@ -233,4 +234,6 @@
  .content{padding:0;}
  .content p{font0-size:1.2rem;}
  .content h1{font-size:3.0rem;}
+ .mo{display:block;}
+ .pc{display:none;}
 }
