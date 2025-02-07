@@ -210,3 +210,7 @@
       font-weight:600;
       padding:0 20px;
     }
+
+@media (max-width: 1920px) {
+ .content{padding:0;}
+}
