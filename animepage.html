@@ -20,6 +20,14 @@
       overflow: hidden;
       background-color:#000;
     }
+    body.locked {
+  overflow: hidden;  /* 기본적으로 스크롤 막기 */
+}
+
+body.unlocked {
+  overflow: auto;  /* 마지막 섹션에서는 일반 스크롤 가능 */
+}
+
     h1, h2, h3,h4,h5{
       font-family: 'Montserrat', sans-serif;
       font-weight:900;
@@ -260,12 +268,13 @@
    // 섹션과 내비게이션 요소 선택
 const sections = document.querySelectorAll('.section');
 const navLinks = document.querySelectorAll('.nav-item a');
+const footer = document.querySelector('.footer');
 let currentSectionIndex = 0;
 let isScrolling = false;
 
 // 스크롤 이벤트 리스너
 window.addEventListener('wheel', (e) => {
-  e.preventDefault();
+  //e.preventDefault();
   if (isScrolling) return;
   isScrolling = true;
 
@@ -274,7 +283,16 @@ window.addEventListener('wheel', (e) => {
   } else if (e.deltaY < 0 && currentSectionIndex > 0) {
     currentSectionIndex--;
   }
-
+  
+  // 마지막 섹션이면 스크롤 락 해제
+  if (currentSectionIndex === sections.length - 1) {
+    document.body.classList.remove('locked');
+    document.body.classList.add('unlocked');
+  } else {
+    document.body.classList.remove('unlocked');
+    document.body.classList.add('locked');
+  }
+  
   scrollToSection(currentSectionIndex);
   setTimeout(() => isScrolling = false, 800);
 }, { passive: false });
@@ -285,8 +303,26 @@ navLinks.forEach((link, index) => {
     e.preventDefault();
     currentSectionIndex = index;
     scrollToSection(index);
+
+    if (index === sections.length - 1) {
+      document.body.classList.remove('locked');
+      document.body.classList.add('unlocked');
+    } else {
+      document.body.classList.remove('unlocked');
+      document.body.classList.add('locked');
+    }
   });
 });
+
+// 섹션 이동 함수
+function scrollToSection(index) {
+  if (index < sections.length - 1) {
+    sections[index].scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+// 초기 설정: 스크롤 막기
+document.body.classList.add('locked');
 
 // 스크롤 시 섹션 이동 및 애니메이션 적용
 function scrollToSection(index) {
