@@ -334,6 +334,8 @@ const observer = new IntersectionObserver((entries) => {
       const h1 = entry.target.querySelector('h1');
       animateText(h1); // 해당 섹션이 보일 때 애니메이션 실행
       entry.target.classList.add('visible'); 
+    }else{
+      entry.target.classList.remove('visible'); 
     }
   });
 }, { threshold: 0.6 });
