@@ -64,7 +64,7 @@
     .main_page .section-6 .content{max-width:100%;}
 
     .sub1_page .section{
-      heigth:100vh;
+      height:100vh;
       position: relative;
       scroll-snap-align: start;
       padding:0 50px;
