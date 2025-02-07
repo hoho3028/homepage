@@ -71,15 +71,25 @@
       align-items: flex-start;
       padding:5% 50px;
       background-size:cover;
-      background-repeat:no-repeat;}
+      background-repeat:no-repeat;
+    }
     .sub1_page .section-1{
       background-image: url('../img/main/main_bg2.jpg');}
-    .sub1_page .tag_box{padding-top:20px;display:flex;flex-wrap:wrap;width:60%;gap:15px;}
+    .sub1_page .tag_box{
+      padding-top:20px;
+      display:flex;
+      flex-wrap:wrap;
+      width:60%;
+      gap:15px;
+    }
     .sub1_page .tag_box span{
      color:#fff;
      padding:5px 40px;
      border:1px solid #fff;
      border-radius:10px;
+    }
+    .sub1_page .section-4 content.info_text{
+     text-align:center;
     }
     #top-gnb {
       position: fixed;
