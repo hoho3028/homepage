@@ -63,7 +63,15 @@
     .main_page .section-6 .content h1{text-align:left;}
     .main_page .section-6 .content{max-width:100%;}
 
-    .sub1_page .section{heigth:100vh;}
+    .sub1_page .section{
+      heigth:100vh;
+      position: relative;
+      scroll-snap-align: start;
+      padding:0 50px;
+      background-size:cover;
+      background-repeat:no-repeat;}
+    .sub1_page .section-1{
+      background-image: url('../img/main/main_bg2.jpg');}
     #top-gnb {
       position: fixed;
       top: 0;
