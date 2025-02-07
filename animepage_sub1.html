@@ -1,1 +1,176 @@
-fk
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACKTOS_sub1</title>
+<!--   <link rel="stylesheet" href="css/style.css"> -->
+  <link rel="stylesheet" href="css/font.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a{text-decoration: none;color:#fff;}
+    body, html {
+      height: 100%;
+      font-family: 'Montserrat', sans-serif;
+      font-weight:normal;
+      overflow: hidden;
+      background-color:#000;
+      -ms-overflow-style: none;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    body.locked {
+      overflow: hidden;  /* 기본적으로 스크롤 막기 */
+    }
+    body.unlocked {
+      overflow: auto;  /* 마지막 섹션에서는 일반 스크롤 가능 */
+    }
+    h1, h2, h3,h4,h5{
+      font-family: 'Montserrat', sans-serif;
+      font-weight:900;
+    }
+    p.pot{
+      font-family: 'Montserrat', sans-serif;
+      font-weight:600;
+      padding-top:0;
+      padding-bottom:8%;
+    }
+    p{
+      font-family:'Pretendard', sans-serif;
+      font-weight:200;
+    }
+
+    
+    #top-gnb {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: transparent;
+      z-index: 1000;
+    }
+
+    #top-gnb ul {
+      display: flex;
+      justify-content: space-between;
+      list-style-type: none;
+      padding: 10px 50px;
+    }
+
+    #top-gnb a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .footer{width:100%;padding:50px;background-color:#040d1c;}
+    .footer p{text-align:center;}
+    .footer p:nth-child(1){
+      color:#c58c00;
+    }
+    .footer p:nth-child(2){padding:40px 0;}
+    .footer p:nth-child(2) a{
+      color:#fff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight:600;
+      padding:0 20px;
+    }
+  </style>
+</head>
+<body>
+  <nav id="top-gnb">
+    <ul>
+      <li class="logo"><a href="#section-1">logo</a></li>
+      <li class="topmenu"><a href="#section-2">메뉴</a></li>
+    </ul>
+  </nav>
+
+  <section class="section section-1" id="section-1">
+    <div class="content">
+      <h1 data-text="Your Brand's Journey<br>Starts Here - with Arktos.<br>Advertising Beyond<br>Boundaries with Arktos"></h1>
+      <p>The North Star of Advertising Excellence</p>
+    </div>
+  </section>
+
+  <section class="section section-2" id="section-2">
+    <div class="content">
+      <p class="pot">PORTFOLIO_01</p>
+      <p>Cilent Folding star HANSUNG</p>
+      <h1 data-text="Folding star HANSUNG<br>Digital&SNS Marketing"> </h1>
+      <a href="#" class="btn_into">자세히 보기</a>
+    </div>
+  </section>
+
+  <section class="section section-3" id="section-3">
+    <div class="content">
+      <p class="pot">PORTFOLIO_02</p>
+      <p>Cilent JS Foldingdoor</p>
+      <h1 data-text="JS FOLDINGDOOR<br>Digital&SNS Marketing"> </h1>
+      <a href="#" class="btn_into">자세히 보기</a>
+    </div>
+  </section>
+
+  <section class="section section-4" id="section-4">
+    <div class="content">
+      <p class="pot">PORTFOLIO_03</p>
+      <p>Cilent JJ System</p>
+      <h1 data-text="SEJIN FOLDING<br>Digital&SNS Marketing"> </h1>
+      <a href="#" class="btn_into">자세히 보기</a>
+    </div>
+  </section>
+
+  <section class="section section-5" id="section-5">
+    <div class="content">
+      <p class="pot">PORTFOLIO_04</p>
+      <p>Cilent iroomdoor</p>
+      <h1 data-text="Iroomdoor<br>Digital&SNS Marketing"> </h1>
+      <a href="#" class="btn_into">자세히 보기</a>
+    </div>
+  </section>
+  <section class="section section-6" id="section-6">
+    <div class="content">
+      <h1 data-text="Contact Us."> </h1>
+      <div class="map_box">
+        <div class="google_map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.5010615367323!2d127.02797!3d37.4960988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca15a69e7fc37%3A0xbb1ce522295b9533!2z7ISc7Jq47Yq567OE7IucIOyEnOy0iOq1rCDqsJXrgqjrjIDroZwgMzcz!5e0!3m2!1sko!2skr!4v1738944103114!5m2!1sko!2skr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="map_info">
+          <p><b>OFFICE.</b></p>
+          <p>ARKTOS.Co.,Ltd<br>서울특별시 서초구 강남대로 373.<br>서초홍우빌딩 10층</p>
+          <p><b>TEL.</b></p>
+          <p>010 4490 7523</p>
+          <p><b>MAIL.</b></p>
+          <p>ey.khashi16@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <p>ⓒ2024 ACKTOS Company. All rights reserved.</p>
+    <p>
+      <a href="#">HOME</a>
+      <a href="#">ABOUT</a>
+      <a href="#">REQUEST</a>
+    </p>
+  </footer>
+  <nav>
+    <ul class="nav-container">
+      <li class="nav-item"><a href="#section-1" class="active"></a></li>
+      <li class="nav-item"><a href="#section-2"></a></li>
+      <li class="nav-item"><a href="#section-3"></a></li>
+      <li class="nav-item"><a href="#section-4"></a></li>
+      <li class="nav-item"><a href="#section-5"></a></li>
+      <li class="nav-item"><a href="#section-6"></a></li>
+    </ul>
+  </nav>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script>
+
+  </script>
+</body>
+</html>
