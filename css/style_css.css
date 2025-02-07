@@ -50,11 +50,11 @@
     .main_page .section.visible {
       opacity: 1;
     }
-    .main_page .section-1 { background-image: url('/img/main/main_bg1.jpg');justify-content: flex-start;}
-    .main_page .section-2 { background-image: url('/img/main/main_bg2.jpg');justify-content: flex-start; }
-    .main_page .section-3 { background-image: url('/img/main/main_bg3.jpg');justify-content: flex-start; }
-    .main_page .section-4 { background-image: url('/img/main/main_bg4.jpg');justify-content: flex-start; }
-    .main_page .section-5 { background-image: url('/img/main/main_bg5.jpg'); }
+    .main_page .section-1 { background-image: url('../img/main/main_bg1.jpg');justify-content: flex-start;}
+    .main_page .section-2 { background-image: url('../img/main/main_bg2.jpg');justify-content: flex-start; }
+    .main_page .section-3 { background-image: url('../img/main/main_bg3.jpg');justify-content: flex-start; }
+    .main_page .section-4 { background-image: url('../img/main/main_bg4.jpg');justify-content: flex-start; }
+    .main_page .section-5 { background-image: url('../img/main/main_bg5.jpg'); }
     .main_page .section-6 { background-color: #000; }
     .main_page .section-1 .content h1{text-align:left;}
     .main_page .section-2 .content h1{text-align:left;}
