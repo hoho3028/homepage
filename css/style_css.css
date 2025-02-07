@@ -35,7 +35,7 @@
       font-family:'Pretendard', sans-serif;
       font-weight:200;
     }
-    section {
+    .main_page .section {
       height: 100vh;
       display: flex;
       align-items: center;
@@ -47,22 +47,22 @@
       opacity: 0;
       transition: opacity 0.5s ease-in-out;
     }
-    .section.visible {
+    .main_page .section.visible {
       opacity: 1;
     }
-    .section-1 { background-image: url('img/main/main_bg1.jpg');justify-content: flex-start;}
-    .section-2 { background-image: url('img/main/main_bg2.jpg');justify-content: flex-start; }
-    .section-3 { background-image: url('img/main/main_bg3.jpg');justify-content: flex-start; }
-    .section-4 { background-image: url('img/main/main_bg4.jpg');justify-content: flex-start; }
-    .section-5 { background-image: url('img/main/main_bg5.jpg'); }
-    .section-6 { background-color: #000; }
-    .section-1 .content h1{text-align:left;}
-    .section-2 .content h1{text-align:left;}
-    .section-3 .content h1{text-align:left;}
-    .section-4 .content h1{text-align:left;}
-    .section-5 .content h1{text-align:left;}
-    .section-6 .content h1{text-align:left;}
-    .section-6 .content{max-width:100%;}
+    .main_page .section-1 { background-image: url('img/main/main_bg1.jpg');justify-content: flex-start;}
+    .main_page .section-2 { background-image: url('img/main/main_bg2.jpg');justify-content: flex-start; }
+    .main_page .section-3 { background-image: url('img/main/main_bg3.jpg');justify-content: flex-start; }
+    .main_page .section-4 { background-image: url('img/main/main_bg4.jpg');justify-content: flex-start; }
+    .main_page .section-5 { background-image: url('img/main/main_bg5.jpg'); }
+    .main_page .section-6 { background-color: #000; }
+    .main_page .section-1 .content h1{text-align:left;}
+    .main_page .section-2 .content h1{text-align:left;}
+    .main_page .section-3 .content h1{text-align:left;}
+    .main_page .section-4 .content h1{text-align:left;}
+    .main_page .section-5 .content h1{text-align:left;}
+    .main_page .section-6 .content h1{text-align:left;}
+    .main_page .section-6 .content{max-width:100%;}
     
     #top-gnb {
       position: fixed;
@@ -124,7 +124,7 @@
       transform: translateY(0); 
     }
     
-    .section-1 .content span.char.visible:nth-child(36), .section-1 .content span.char.visible:nth-child(37), .section-1 .content span.char.visible:nth-child(38), .section-1 .content span.char.visible:nth-child(39), .section-1 .content span.char.visible:nth-child(41), .section-1 .content span.char.visible:nth-child(42), .section-1 .content span.char.visible:nth-child(43), .section-1 .content span.char.visible:nth-child(44), .section-1 .content span.char.visible:nth-child(45), .section-1 .content span.char.visible:nth-child(46), .section-1 .content span.char.visible:nth-child(47), .section-1 .content span.char.visible:nth-child(48){color:#c38b00;}
+    .main_page .section-1 .content span.char.visible:nth-child(36),.main_page .section-1 .content span.char.visible:nth-child(37),.main_page .section-1 .content span.char.visible:nth-child(38),.main_page .section-1 .content span.char.visible:nth-child(39),.main_page .section-1 .content span.char.visible:nth-child(41),.main_page .section-1 .content span.char.visible:nth-child(42),.main_page .section-1 .content span.char.visible:nth-child(43),.main_page .section-1 .content span.char.visible:nth-child(44),.main_page .section-1 .content span.char.visible:nth-child(45),.main_page .section-1 .content span.char.visible:nth-child(46),.main_page .section-1 .content span.char.visible:nth-child(47),.main_page .section-1 .content span.char.visible:nth-child(48){color:#c38b00;}
     .nav-container {
       position: fixed;
       top: 50%;
