@@ -63,7 +63,8 @@
     .main_page .section-5 .content h1{text-align:left;}
     .main_page .section-6 .content h1{text-align:left;}
     .main_page .section-6 .content{max-width:100%;}
-    
+
+    .sub1_page .section{heigth:100vh;}
     #top-gnb {
       position: fixed;
       top: 0;
