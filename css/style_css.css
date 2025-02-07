@@ -215,6 +215,7 @@
  .content{padding:0 5%;}
 }
 @media (max-width: 1280px) {
+ .content{padding:0 3%;}
  .content p{font0-size:1.8rem;}
  .content h1{font-size:4rem;}
  .content .btn_into{font-size:0.8rem;}
