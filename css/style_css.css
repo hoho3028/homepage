@@ -72,6 +72,10 @@
       background-repeat:no-repeat;}
     .sub1_page .section-1{
       background-image: url('../img/main/main_bg2.jpg');}
+
+    .sub1_page .tag_box{
+     
+    }
     #top-gnb {
       position: fixed;
       top: 0;
