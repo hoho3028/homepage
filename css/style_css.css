@@ -125,7 +125,6 @@
     }
     
     .section-1 .content span.char.visible:nth-child(36), .section-1 .content span.char.visible:nth-child(37), .section-1 .content span.char.visible:nth-child(38), .section-1 .content span.char.visible:nth-child(39), .section-1 .content span.char.visible:nth-child(41), .section-1 .content span.char.visible:nth-child(42), .section-1 .content span.char.visible:nth-child(43), .section-1 .content span.char.visible:nth-child(44), .section-1 .content span.char.visible:nth-child(45), .section-1 .content span.char.visible:nth-child(46), .section-1 .content span.char.visible:nth-child(47), .section-1 .content span.char.visible:nth-child(48){color:#c38b00;}
-
     .nav-container {
       position: fixed;
       top: 50%;
