@@ -38,7 +38,6 @@
       font-family:'Pretendard', sans-serif;
       font-weight:200;
     }
-
     section {
       height: 100vh;
       display: flex;
@@ -60,8 +59,6 @@
     .section-4 { background-image: url('img/main/main_bg4.jpg');justify-content: flex-start; }
     .section-5 { background-image: url('img/main/main_bg5.jpg'); }
     .section-6 { background-color: #000; }
-
-
     .section-1 .content h1{text-align:left;}
     .section-2 .content h1{text-align:left;}
     .section-3 .content h1{text-align:left;}
@@ -89,53 +86,48 @@
       color: white;
       text-decoration: none;
     }
-
-
-.content{max-width:1920px;padding:0 10%;}
+    .content{max-width:1920px;padding:0 10%;}
     
-  /* 모든 h1 기본 숨김 */
-.content h1 {
-  font-size: 5rem;
-  color: white;
-  min-width:560px;
-/*   opacity: 0;               /* 초기에는 안 보이도록 */ */
-/*   transform: translateY(20px); /* 아래에서 올라오는 효과 */ */
-/*   transition: opacity 2.0s ease, transform 2.0s ease; */
-  white-space: pre-line;     /* <br> 태그를 줄바꿈으로 처리 */
-}
-
-.content p{color:#fff;font-size:2rem;margin-top:2rem;}
+    /* 모든 h1 기본 숨김 */
+    .content h1 {
+      font-size: 5rem;
+      color: white;
+      min-width:560px;
+      /* opacity: 0;               /* 초기에는 안 보이도록 */ */
+      /* transform: translateY(20px); /* 아래에서 올라오는 효과 */ */
+      /*transition: opacity 2.0s ease, transform 2.0s ease; */
+      white-space: pre-line;     /* <br> 태그를 줄바꿈으로 처리 */
+    }
+    .content p{color:#fff;font-size:2rem;margin-top:2rem;}
     
-/* 애니메이션 시작 시 보이게 */
-.content h1.visible {
-  opacity: 1;
-  transform: translateY(0); 
-}
-
-.content .btn_into{color: #Fff;
-    padding: 10px 30px;
-    border: 1px solid #fff;
-    margin-top: 50px;
-    display: inline-block;
-    text-decoration: none;}
-
-/* 각 글자 개별 애니메이션 설정 */
-.char {
-  display: inline-block;
-/*   opacity: 0;                /* 초기 글자 숨김 */ */
-/*   transform: translateY(20px);  */
-/*   transition: opacity 0.4s ease, transform 0.4s ease; */
-/*   transition: opacity 0.4s ease; */
-}
-
-.char.visible {
-  opacity: 1;               /* 애니메이션으로 글자 보이게 */
-  transform: translateY(0); 
-}
-
-.section-1 .content span.char.visible:nth-child(36), .section-1 .content span.char.visible:nth-child(37), .section-1 .content span.char.visible:nth-child(38), .section-1 .content span.char.visible:nth-child(39), .section-1 .content span.char.visible:nth-child(41), .section-1 .content span.char.visible:nth-child(42), .section-1 .content span.char.visible:nth-child(43), .section-1 .content span.char.visible:nth-child(44), .section-1 .content span.char.visible:nth-child(45), .section-1 .content span.char.visible:nth-child(46), .section-1 .content span.char.visible:nth-child(47), .section-1 .content span.char.visible:nth-child(48){color:#c38b00;}
-
-
+    /* 애니메이션 시작 시 보이게 */
+    .content h1.visible {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+    
+    .content .btn_into{color: #Fff;
+      padding: 10px 30px;
+      border: 1px solid #fff;
+      margin-top: 50px;
+      display: inline-block;
+      text-decoration: none;}
+    
+    /* 각 글자 개별 애니메이션 설정 */
+    .char {
+      display: inline-block;
+      /*opacity: 0;                /* 초기 글자 숨김 */ */
+      /*transform: translateY(20px);  */
+      /*transition: opacity 0.4s ease, transform 0.4s ease; */
+      /*transition: opacity 0.4s ease; */
+    }
+    
+    .char.visible {
+      opacity: 1;               /* 애니메이션으로 글자 보이게 */
+      transform: translateY(0); 
+    }
+    
+    .section-1 .content span.char.visible:nth-child(36), .section-1 .content span.char.visible:nth-child(37), .section-1 .content span.char.visible:nth-child(38), .section-1 .content span.char.visible:nth-child(39), .section-1 .content span.char.visible:nth-child(41), .section-1 .content span.char.visible:nth-child(42), .section-1 .content span.char.visible:nth-child(43), .section-1 .content span.char.visible:nth-child(44), .section-1 .content span.char.visible:nth-child(45), .section-1 .content span.char.visible:nth-child(46), .section-1 .content span.char.visible:nth-child(47), .section-1 .content span.char.visible:nth-child(48){color:#c38b00;}
 
     .nav-container {
       position: fixed;
