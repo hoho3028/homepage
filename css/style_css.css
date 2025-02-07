@@ -228,5 +228,9 @@
  .content{padding:0;}
  .content p{font0-size:1.5rem;}
  .content h1{font-size:3.5rem;}
- .content .btn_into{font-size:0.5rem;}
+}
+@media (max-width: 900px) {
+ .content{padding:0;}
+ .content p{font0-size:1.2rem;}
+ .content h1{font-size:3.0rem;}
 }
